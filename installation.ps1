@@ -1,5 +1,6 @@
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
 [System.Net.ServicePointManager]::ServerCertificateValidationCallback = { $true }
+
 $installPath = "C:\ss"
 if (!(Test-Path $installPath)) {
     New-Item -ItemType Directory -Path $installPath -Force
@@ -9,9 +10,15 @@ $files = @(
     @{Name="JournalTraceNormal.exe"; Url="https://github.com/spokwn/JournalTrace/releases/download/1.2/JournalTraceNormal.exe"},
     @{Name="pv+.exe"; Url="https://github.com/command8913/SS-Tools/raw/main/pv%2B.exe"}
 )
+
 foreach ($file in $files) {
     $output = Join-Path $installPath $file.Name
-   
+    try {
+        Invoke-WebRequest -Uri $file.Url -OutFile $output -UseBasicParsing
+        Write-Host "OK: $($file.Name)" -ForegroundColor Green
+    } catch {
+        Write-Host "FAIL: $($file.Name)" -ForegroundColor Red
+    }
 }
 
 Get-ChildItem -Path $installPath -Filter "*.exe" | ForEach-Object {
