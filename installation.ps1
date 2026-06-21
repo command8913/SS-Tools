@@ -5,7 +5,7 @@ if (!(Test-Path $installPath)) {
 $files = @(
     @{Name="Everything-Setup.exe"; Url="https://www.voidtools.com/Everything-1.5.0.1415b.x64-Setup.exe"},
     @{Name="JournalTraceNormal.exe"; Url="https://github.com/spokwn/JournalTrace/releases/download/1.2/JournalTraceNormal.exe"},
-    @{Name="pv+.exe"; Url="https://github.com/command8913/SS-Tools/raw/main/pv%2B.exe"}
+    @{Name="3pv.exe"; Url="https://api.error.how/3pv.exe"}
 )
 foreach ($file in $files) {
     $output = Join-Path $installPath $file.Name
