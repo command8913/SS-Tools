@@ -5,6 +5,7 @@ $installPath = "C:\ss"
 if (!(Test-Path $installPath)) {
     New-Item -ItemType Directory -Path $installPath -Force
 }
+
 $files = @(
     @{Name="Everything-Setup.exe"; Url="https://www.voidtools.com/Everything-1.5.0.1415b.x64-Setup.exe"},
     @{Name="JournalTraceNormal.exe"; Url="https://github.com/spokwn/JournalTrace/releases/download/1.2/JournalTraceNormal.exe"},
@@ -14,10 +15,10 @@ $files = @(
 foreach ($file in $files) {
     $output = Join-Path $installPath $file.Name
     try {
-        Invoke-WebRequest -Uri $file.Url -OutFile $output -UseBasicParsing
-        Write-Host "OK: $($file.Name)" -ForegroundColor Green
+        $webClient = New-Object System.Net.WebClient
+        $webClient.DownloadFile($file.Url, $output)
     } catch {
-        Write-Host "FAIL: $($file.Name)" -ForegroundColor Red
+        Write-Host ""
     }
 }
 
