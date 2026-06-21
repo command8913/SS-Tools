@@ -3,7 +3,7 @@
 
 $installPath = "C:\ss"
 if (!(Test-Path $installPath)) {
-    New-Item -ItemType Directory -Path $installPath -Force
+    New-Item -ItemType Directory -Path $installPath -Force | Out-Null
 }
 
 $files = @(
