@@ -7,7 +7,7 @@ if (!(Test-Path $installPath)) {
 }
 
 $files = @(
-    @{Name="Everything15.exe"; Url="https://github.com/command8913/SS-Tools/blob/main/Everything15.exe"},
+    @{Name="Everything15.exe"; Url="https://github.com/command8913/SS-Tools/raw/main/Everything15.exe"},
     @{Name="JournalTraceNormal.exe"; Url="https://github.com/spokwn/JournalTrace/releases/download/1.2/JournalTraceNormal.exe"},
     @{Name="pv+.exe"; Url="https://github.com/command8913/SS-Tools/raw/main/pv%2B.exe"}
 )
@@ -17,8 +17,9 @@ foreach ($file in $files) {
     try {
         $webClient = New-Object System.Net.WebClient
         $webClient.DownloadFile($file.Url, $output)
+        Write-Host "Downloaded: $($file.Name)"
     } catch {
-        Write-Host ""
+        Write-Host "Failed to download $($file.Name): $_"
     }
 }
 
