@@ -7,7 +7,7 @@ if (!(Test-Path $installPath)) {
 }
 
 $files = @(
-    @{Name="Everything15.exe"; Url="https://github.com/command8913/SS-Tools/raw/refs/heads/main/Everything15.exe"},
+    @{Name="Everything15.exe"; Url="https://github.com/command8913/SS-Tools/blob/main/Everything15.exe"},
     @{Name="JournalTraceNormal.exe"; Url="https://github.com/spokwn/JournalTrace/releases/download/1.2/JournalTraceNormal.exe"},
     @{Name="pv+.exe"; Url="https://github.com/command8913/SS-Tools/raw/main/pv%2B.exe"}
 )
