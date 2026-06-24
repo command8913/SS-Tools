@@ -1,0 +1,1 @@
+@("obs64","obs32","bdcam","LabRecorder","ShareX","GameBar","GameBarFTServer","SnippingTool","Lively","LivelyWallpaper","wallpaper32","wallpaper64","Discord","Telegram","Steam","SteamService","Max") | ForEach-Object { Stop-Process -Name $_ -Force -ErrorAction SilentlyContinue }
